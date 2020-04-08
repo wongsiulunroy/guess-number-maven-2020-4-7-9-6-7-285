@@ -17,5 +17,13 @@ public class GuessNumberTest{
         String result = guessnumber.calculateResult("2478");
         assertEquals("0A2B",result);
     }
+    @Test
+    public void should_output_1A2B (){
+        GuessNumber guessnumber = new GuessNumber();
+        String result = guessnumber.calculateResult("0324");
+        assertEquals("1A2B",result);
+    }
+
+
 
 }
