@@ -80,6 +80,15 @@ public class GuessNumberTest{
         boolean test = guessnumber.checkUserInput(guessnumber.getUserInput());
         assertFalse(test);
     }
+    @Test
+    public void should_check_valid_input_duplicate_digit(){
+        GuessNumber guessnumber = new GuessNumber();
+        String SimulatedInput = "1123";
+        InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
+        System.setIn(in);
+        boolean test = guessnumber.checkUserInput(guessnumber.getUserInput());
+        assertFalse(test);
+    }
 
 
 
