@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GuessNumber {
+
+
+
     public String calculateResult(String inputNumber) {
         String expectedNumber = "1234";
         String returnString="";
@@ -40,4 +43,12 @@ public class GuessNumber {
         return result;
     }
 
+    public String getUserInput() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter a 4-digit number: ");
+        String userInput = in.nextLine();
+        System.out.println(userInput);
+        in.close();
+        return userInput;
+    }
 }
