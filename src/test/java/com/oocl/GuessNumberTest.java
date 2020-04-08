@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class GuessNumberTest{
     @Test
@@ -71,12 +72,13 @@ public class GuessNumberTest{
     }
 
     @Test
-    public void should_check_valid_input(){
+    public void should_check_valid_input_less_than_4_digit(){
         GuessNumber guessnumber = new GuessNumber();
-        String SimulatedInput = "11";
+        String SimulatedInput = "123";
         InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
         System.setIn(in);
-        assertEquals("1379",guessnumber.checkUserInput(guessnumber.getUserInput()));
+        boolean test = guessnumber.checkUserInput(guessnumber.getUserInput());
+        assertFalse(test);
     }
 
 
