@@ -1,5 +1,10 @@
 package com.oocl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
 public class GuessNumber {
     public String calculateResult(String inputNumber) {
         String expectedNumber = "1234";
@@ -20,4 +25,19 @@ public class GuessNumber {
         }
         return String.format("%dA%dB",valueA,valueB);
     }
+
+    public String generateRandomNumber() {
+        List<Integer> numbers = new ArrayList();
+        for (int i = 0; i < 10; i++) {
+            numbers.add(i);
+        }
+        Collections.shuffle(numbers);
+        String result = "";
+        for (int i = 0; i < 4; i++) {
+            result += numbers.get(i).toString();
+        }
+        System.out.println(result);
+        return result;
+    }
+
 }
