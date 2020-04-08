@@ -10,11 +10,17 @@ public class GuessNumber {
         for (int index = 0; index<inputNumber.length(); index ++ ){
             if (inputNumber.charAt(index)==expectedNumber.charAt(index)){
                 valueA ++;
-                return String.format("%dA%dB",valueA,valueB);
             }
+            //return String.format("%dA%dB",valueA,valueB);
         }
-        return returnString;
-
-
+        for (int index = 0; index<inputNumber.length(); index ++ ) {
+            for (int secondIndex = 0; secondIndex<expectedNumber.length(); secondIndex++){
+                if (inputNumber.charAt(index)==expectedNumber.charAt(secondIndex)){
+                    valueB++;
+                }
+            }
+            //return String.format("%dA%dB",valueA,valueB);
+        }
+        return String.format("%dA%dB",valueA,valueB);
     }
 }
