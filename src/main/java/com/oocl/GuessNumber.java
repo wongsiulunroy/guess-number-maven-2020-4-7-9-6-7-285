@@ -13,12 +13,18 @@ public class GuessNumber {
         int gameCounter = 1;
         while(gameCounter<=6) {
             String userInput = game.getUserInput();
-            calculatedResult = game.calculateResult(userInput, expectedResult);
-            System.out.print(calculatedResult);
-            if (calculatedResult == "4A0B"){
-                System.out.print("You win!");
+            if (game.checkUserInput(userInput)){
+                calculatedResult = game.calculateResult(userInput, expectedResult);
+                System.out.print(calculatedResult);
+                if (calculatedResult.equals("4A0B")){
+                    System.out.print("\nYou win!");
+                    break;
+                }
+                gameCounter++;
+            }else {
+                System.out.println("Wrong Input");
+                break;
             }
-            gameCounter++;
         }
     }
 
@@ -64,5 +70,14 @@ public class GuessNumber {
         //System.out.println(userInput);
         //in.close();1
         return userInput;
+    }
+
+    public boolean checkUserInput(String userInput) {
+        int requiredLengthOfInput = 4;
+        if (userInput.length()!=requiredLengthOfInput){
+            //System.out.println(userInput.length());
+            return false;
+        }
+        return true;
     }
 }
