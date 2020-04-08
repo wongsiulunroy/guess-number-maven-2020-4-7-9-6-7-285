@@ -42,6 +42,12 @@ public class GuessNumberTest{
         assertEquals("4A0B",result);
     }
 
+    @Test
+    public void should_generate_some_number(){
+        GuessNumber guessnumber = new GuessNumber();
+        String randomNumber = guessnumber.generateRandomNumber();
+    }
+
 
 
 }
