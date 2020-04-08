@@ -70,6 +70,15 @@ public class GuessNumberTest{
         assertEquals("1379",guessnumber.getUserInput());
     }
 
+    @Test
+    public void should_check_valid_input(){
+        GuessNumber guessnumber = new GuessNumber();
+        String SimulatedInput = "11";
+        InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
+        System.setIn(in);
+        assertEquals("1379",guessnumber.checkUserInput(guessnumber.getUserInput()));
+    }
+
 
 
 }
