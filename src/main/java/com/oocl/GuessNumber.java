@@ -7,16 +7,24 @@ import java.util.Scanner;
 
 public class GuessNumber {
     public static void main(String[] args) {
-        // do something here...
         GuessNumber game = new GuessNumber();
-        String userInput = game.getUserInput();
-        //game.calculateResult();
+        String expectedResult = game.generateRandomNumber();
+        String calculatedResult="";
+        int gameCounter = 1;
+        while(gameCounter<=6) {
+            String userInput = game.getUserInput();
+            calculatedResult = game.calculateResult(userInput, expectedResult);
+            System.out.print(calculatedResult);
+            if (calculatedResult == "4A0B"){
+                System.out.print("You win!");
+            }
+            gameCounter++;
+        }
     }
 
 
 
     public String calculateResult(String inputNumber, String expectedNumber) {
-        //String expectedNumber = inputNumber;
         String returnString="";
         int valueA = 0;
         int valueB = 0;
@@ -51,10 +59,10 @@ public class GuessNumber {
 
     public String getUserInput() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter a 4-digit number: ");
+        System.out.print("\nEnter a 4-digit number: ");
         String userInput = in.nextLine();
-        System.out.println(userInput);
-        in.close();
+        //System.out.println(userInput);
+        //in.close();1
         return userInput;
     }
 }
