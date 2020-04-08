@@ -17,6 +17,9 @@ public class GuessNumber {
             for (int secondIndex = 0; secondIndex<expectedNumber.length(); secondIndex++){
                 if (inputNumber.charAt(index)==expectedNumber.charAt(secondIndex)){
                     valueB++;
+                    if (inputNumber.charAt(index)==expectedNumber.charAt(index)){
+                        valueB--;
+                    }
                 }
             }
             //return String.format("%dA%dB",valueA,valueB);
