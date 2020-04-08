@@ -48,6 +48,13 @@ public class GuessNumberTest{
         String randomNumber = guessnumber.generateRandomNumber();
     }
 
+    @Test
+    public void should_read_input_from_user(){
+        GuessNumber guessnumber = new GuessNumber();
+        String inputString = guessnumber.getUserInput();
+        assertEquals("1234",inputString);
+    }
+
 
 
 }
