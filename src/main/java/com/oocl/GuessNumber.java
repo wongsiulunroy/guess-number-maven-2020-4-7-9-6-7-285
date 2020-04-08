@@ -1,9 +1,6 @@
 package com.oocl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class GuessNumber {
     public static void main(String[] args) {
@@ -13,7 +10,12 @@ public class GuessNumber {
         int gameCounter = 1;
         while(gameCounter<=6) {
             String userInput = game.getUserInput();
-            if (game.checkUserInput(userInput)){
+            while (!game.checkUserInput(userInput) && gameCounter<=6){
+                System.out.println("Wrong Input, Input again!");
+                userInput = game.getUserInput();
+                gameCounter++;
+            }
+            if (game.checkUserInput(userInput) && gameCounter<=6){
                 calculatedResult = game.calculateResult(userInput, expectedResult);
                 System.out.print(calculatedResult);
                 if (calculatedResult.equals("4A0B")){
@@ -21,10 +23,8 @@ public class GuessNumber {
                     break;
                 }
                 gameCounter++;
-            }else {
-                System.out.println("Wrong Input");
-                break;
             }
+
         }
     }
 
@@ -74,8 +74,13 @@ public class GuessNumber {
 
     public boolean checkUserInput(String userInput) {
         int requiredLengthOfInput = 4;
+        List<String> checkDistinct;
         if (userInput.length()!=requiredLengthOfInput){
             //System.out.println(userInput.length());
+            return false;
+        }
+        checkDistinct = Arrays.asList(userInput.split(""));
+        if (checkDistinct.size()!=checkDistinct.stream().distinct().count()){
             return false;
         }
         return true;
