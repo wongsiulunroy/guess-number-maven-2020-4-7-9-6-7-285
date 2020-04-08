@@ -6,11 +6,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GuessNumber {
+    public static void main(String[] args) {
+        // do something here...
+        GuessNumber game = new GuessNumber();
+        String userInput = game.getUserInput();
+        //game.calculateResult();
+    }
 
 
 
-    public String calculateResult(String inputNumber) {
-        String expectedNumber = "1234";
+    public String calculateResult(String inputNumber, String expectedNumber) {
+        //String expectedNumber = inputNumber;
         String returnString="";
         int valueA = 0;
         int valueB = 0;
