@@ -49,7 +49,7 @@ public class GuessNumberTest{
         assertEquals("4A0B",result);
     }
 
-    @Test
+    /*@Test
     public void should_generate_some_number(){
         GuessNumber guessnumber = new GuessNumber();
         AnswerGenerator answerGenerator = new AnswerGenerator();
@@ -61,33 +61,36 @@ public class GuessNumberTest{
             nonRepeat = true;
         }
         Assert.assertEquals(true, nonRepeat);
-    }
+    }*/
 
     @Test
     public void should_read_input_from_user(){
-        GuessNumber guessnumber = new GuessNumber();
+        //GuessNumber guessnumber = new GuessNumber();
+        InputReader inputReader = new InputReader();
         String SimulatedInput = "1379";
         InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
         System.setIn(in);
-        assertEquals("1379",guessnumber.getUserInput());
+        assertEquals("1379",inputReader.getUserInput());
     }
 
     @Test
     public void should_check_valid_input_less_than_4_digit(){
         GuessNumber guessnumber = new GuessNumber();
+        InputReader inputReader = new InputReader();
         String SimulatedInput = "123";
         InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
         System.setIn(in);
-        boolean test = guessnumber.checkUserInput(guessnumber.getUserInput());
+        boolean test = guessnumber.checkUserInput(inputReader.getUserInput());
         assertFalse(test);
     }
     @Test
     public void should_check_valid_input_duplicate_digit(){
         GuessNumber guessnumber = new GuessNumber();
+        InputReader inputReader = new InputReader();
         String SimulatedInput = "1123";
         InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
         System.setIn(in);
-        boolean test = guessnumber.checkUserInput(guessnumber.getUserInput());
+        boolean test = guessnumber.checkUserInput(inputReader.getUserInput());
         assertFalse(test);
     }
 

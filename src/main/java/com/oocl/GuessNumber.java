@@ -6,14 +6,15 @@ public class GuessNumber {
     public static void main(String[] args) {
         GuessNumber game = new GuessNumber();
         AnswerGenerator answerGenerator = new AnswerGenerator();
+        InputReader inputReader = new InputReader();
         String expectedResult = answerGenerator.generateRandomNumber();
         String calculatedResult = "";
         int gameCounter = 1;
         while (gameCounter <= 6) {
-            String userInput = game.getUserInput();
+            String userInput = inputReader.getUserInput();
             while (!game.checkUserInput(userInput) && gameCounter <= 6) {
                 System.out.println("Wrong Input, Input again!");
-                userInput = game.getUserInput();
+                userInput = inputReader.getUserInput();
                 gameCounter++;
             }
             if (game.checkUserInput(userInput) && gameCounter <= 6) {
@@ -59,13 +60,13 @@ public class GuessNumber {
         System.out.println(result);
         return result;
     }*/
-
+ /*
     public String getUserInput() {
         Scanner in = new Scanner(System.in);
         System.out.print("\nEnter a 4-digit number: ");
         String userInput = in.nextLine();
         return userInput;
-    }
+    }*/
 
     public boolean checkUserInput(String userInput) {
         int requiredLengthOfInput = 4;
