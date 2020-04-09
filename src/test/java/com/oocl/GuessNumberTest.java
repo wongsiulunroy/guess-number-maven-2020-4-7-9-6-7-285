@@ -52,9 +52,10 @@ public class GuessNumberTest{
     @Test
     public void should_generate_some_number(){
         GuessNumber guessnumber = new GuessNumber();
-        String randomNumber = guessnumber.generateRandomNumber();
+        AnswerGenerator answerGenerator = new AnswerGenerator();
+        String randomNumber = answerGenerator.generateRandomNumber();
         List<String> checkNumberList;
-        Boolean nonRepeat = false;
+        boolean nonRepeat = false;
         checkNumberList = Arrays.asList(randomNumber.split(""));
         if (checkNumberList.size() == checkNumberList.stream().distinct().count()){
             nonRepeat = true;
