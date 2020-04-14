@@ -6,6 +6,7 @@ public class GuessNumber {
     public static final int MAX_GAME_PLAY = 6;
     public static final String DELIMITER = "";
     public static final int MAX_LENGTH_DIGIT = 4;
+    public static final String CORRECT_OUTPUT = "4A0B";
 
     public static boolean isInputValid(GuessNumber game, String userInput) {
         return game.checkUserInput(userInput);
@@ -13,6 +14,10 @@ public class GuessNumber {
 
     public static boolean isGameOn(int gameCounter) {
         return gameCounter <= MAX_GAME_PLAY;
+    }
+
+    public static boolean isWin(String calculatedResult) {
+        return calculatedResult.equals(CORRECT_OUTPUT);
     }
 
     public String calculateResult(String inputNumber, String expectedNumber) {

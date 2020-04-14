@@ -2,7 +2,6 @@ package com.oocl;
 
 public class App {
     public static final String WRONG_INPUT_MESSAGE = "Wrong Input, Input again!";
-    public static final String CORRECT_OUTPUT = "4A0B";
     public static final String WIN_MESSAGE = "\nYou win!";
 
     public static void main(String[] args) {
@@ -10,7 +9,7 @@ public class App {
         AnswerGenerator answerGenerator = new AnswerGenerator();
         InputReader inputReader = new InputReader();
         String expectedResult = answerGenerator.generateRandomNumber();
-        String calculatedResult = "";
+        String calculatedResult;
 
         int gameCounter = 1;
         while (GuessNumber.isGameOn(gameCounter)) {
@@ -23,7 +22,7 @@ public class App {
             if (GuessNumber.isInputValid(game, userInput) && GuessNumber.isGameOn(gameCounter)) {
                 calculatedResult = game.calculateResult(userInput, expectedResult);
                 System.out.print(calculatedResult);
-                if (calculatedResult.equals(CORRECT_OUTPUT)) {
+                if (game.isWin(calculatedResult)) {
                     System.out.print(WIN_MESSAGE);
                     break;
                 }
@@ -31,4 +30,5 @@ public class App {
             }
         }
     }
+
 }
