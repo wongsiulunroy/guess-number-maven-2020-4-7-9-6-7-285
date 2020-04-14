@@ -15,14 +15,14 @@ public class GuessNumber {
         String expectedResult = answerGenerator.generateRandomNumber();
         String calculatedResult = "";
         int gameCounter = 1;
-        while (gameCounter <= MAX_GAME_PLAY) {
+        while (isGameOn(gameCounter)) {
             String userInput = inputReader.getUserInput();
-            while (!game.checkUserInput(userInput) && gameCounter <= MAX_GAME_PLAY) {
+            while (!isInputValid(game, userInput) && isGameOn(gameCounter)) {
                 System.out.println(WRONG_INPUT_MESSAGE);
                 userInput = inputReader.getUserInput();
                 gameCounter++;
             }
-            if (game.checkUserInput(userInput) && gameCounter <= MAX_GAME_PLAY) {
+            if (isInputValid(game, userInput) && isGameOn(gameCounter)) {
                 calculatedResult = game.calculateResult(userInput, expectedResult);
                 System.out.print(calculatedResult);
                 if (calculatedResult.equals(CORRECT_OUTPUT)) {
@@ -32,6 +32,14 @@ public class GuessNumber {
                 gameCounter++;
             }
         }
+    }
+
+    private static boolean isInputValid(GuessNumber game, String userInput) {
+        return game.checkUserInput(userInput);
+    }
+
+    private static boolean isGameOn(int gameCounter) {
+        return gameCounter <= MAX_GAME_PLAY;
     }
 
 
