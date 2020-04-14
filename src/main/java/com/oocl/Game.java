@@ -1,6 +1,6 @@
 package com.oocl;
 
-public class App {
+public class Game {
     public static final String WRONG_INPUT_MESSAGE = "Wrong Input, Input again!";
     public static final String WIN_MESSAGE = "\nYou win!";
 
@@ -9,7 +9,6 @@ public class App {
         AnswerGenerator answerGenerator = new AnswerGenerator();
         InputReader inputReader = new InputReader();
         String expectedResult = answerGenerator.generateRandomNumber();
-        String calculatedResult;
 
         int gameCounter = 1;
         while (GuessNumber.isGameOn(gameCounter)) {
@@ -20,7 +19,7 @@ public class App {
                 gameCounter++;
             }
             if (GuessNumber.isInputValid(game, userInput) && GuessNumber.isGameOn(gameCounter)) {
-                calculatedResult = game.calculateResult(userInput, expectedResult);
+                String calculatedResult = game.calculateResult(userInput, expectedResult);
                 System.out.print(calculatedResult);
                 if (game.isWin(calculatedResult)) {
                     System.out.print(WIN_MESSAGE);

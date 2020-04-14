@@ -28,7 +28,7 @@ public class GuessNumber {
                 if (inputNumber.charAt(index) == expectedNumber.charAt(index)) {
                     valueA++;
                     break;
-                } else if (inputNumber.charAt(index) == expectedNumber.charAt(secondIndex)){
+                } else if (inputNumber.charAt(index) == expectedNumber.charAt(secondIndex)) {
                     valueB++;
                 }
             }
