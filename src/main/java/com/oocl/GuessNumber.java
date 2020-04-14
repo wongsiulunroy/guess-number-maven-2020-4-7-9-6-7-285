@@ -3,6 +3,11 @@ package com.oocl;
 import java.util.*;
 
 public class GuessNumber {
+    public static final int MAX_GAME_PLAY = 6;
+    public static final String WRONG_INPUT_MESSAGE = "Wrong Input, Input again!";
+    public static final String CORRECT_OUTPUT = "4A0B";
+    public static final String WIN_MESSAGE = "\nYou win!";
+
     public static void main(String[] args) {
         GuessNumber game = new GuessNumber();
         AnswerGenerator answerGenerator = new AnswerGenerator();
@@ -10,18 +15,18 @@ public class GuessNumber {
         String expectedResult = answerGenerator.generateRandomNumber();
         String calculatedResult = "";
         int gameCounter = 1;
-        while (gameCounter <= 6) {
+        while (gameCounter <= MAX_GAME_PLAY) {
             String userInput = inputReader.getUserInput();
-            while (!game.checkUserInput(userInput) && gameCounter <= 6) {
-                System.out.println("Wrong Input, Input again!");
+            while (!game.checkUserInput(userInput) && gameCounter <= MAX_GAME_PLAY) {
+                System.out.println(WRONG_INPUT_MESSAGE);
                 userInput = inputReader.getUserInput();
                 gameCounter++;
             }
-            if (game.checkUserInput(userInput) && gameCounter <= 6) {
+            if (game.checkUserInput(userInput) && gameCounter <= MAX_GAME_PLAY) {
                 calculatedResult = game.calculateResult(userInput, expectedResult);
                 System.out.print(calculatedResult);
-                if (calculatedResult.equals("4A0B")) {
-                    System.out.print("\nYou win!");
+                if (calculatedResult.equals(CORRECT_OUTPUT)) {
+                    System.out.print(WIN_MESSAGE);
                     break;
                 }
                 gameCounter++;
@@ -33,7 +38,6 @@ public class GuessNumber {
     public String calculateResult(String inputNumber, String expectedNumber) {
         int valueA = 0;
         int valueB = 0;
-
         for (int index = 0; index < inputNumber.length(); index++) {
             for (int secondIndex = 0; secondIndex < expectedNumber.length(); secondIndex++) {
                 if (inputNumber.charAt(index) == expectedNumber.charAt(index)) {
@@ -46,27 +50,6 @@ public class GuessNumber {
         }
         return String.format("%dA%dB", valueA, valueB);
     }
-/*
-    public String generateRandomNumber() {
-        List<Integer> numbers = new ArrayList();
-        for (int index = 0; index < 10; index++) {
-            numbers.add(index);
-        }
-        Collections.shuffle(numbers);
-        String result = "";
-        for (int index = 0; index < 4; index++) {
-            result += numbers.get(index).toString();
-        }
-        System.out.println(result);
-        return result;
-    }*/
- /*
-    public String getUserInput() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("\nEnter a 4-digit number: ");
-        String userInput = in.nextLine();
-        return userInput;
-    }*/
 
     public boolean checkUserInput(String userInput) {
         int requiredLengthOfInput = 4;
