@@ -1,7 +1,6 @@
 package com.oocl;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -93,7 +92,4 @@ public class GuessNumberTest{
         boolean test = guessnumber.checkUserInput(inputReader.getUserInput());
         assertFalse(test);
     }
-
-
-
 }
